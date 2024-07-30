@@ -36,7 +36,7 @@ exports.CreateArtist = async (req, res) => {
 
 exports.getAllArtist = async (req, res) => {
     try {
-        const response = await Artist.find({});
+        const response = await Artist.find();
 
         if (!response) {
             return res.status(404).json({

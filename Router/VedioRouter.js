@@ -1,4 +1,4 @@
-const { CreateVideo } = require("../Controllers/Video.controller");
+const { CreateVideo, getAllVideo } = require("../Controllers/Video.controller");
 const multer = require("multer");
 const express = require('express');
 
@@ -16,5 +16,6 @@ const upload = multer({ storage: storage });
 const videoRouter = express.Router();
 
 videoRouter.post("/video", upload.single("video"), CreateVideo);
+videoRouter.get("/video", getAllVideo);
 
 module.exports = videoRouter;
