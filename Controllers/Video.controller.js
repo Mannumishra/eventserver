@@ -6,7 +6,7 @@ exports.CreateVideo = async (req, res) => {
         const addVideo = req.file.path;
         newVideo.video = addVideo;
         await newVideo.save();
-        res.status(201).json({
+        res.status(200).json({
             success: true,
             message: "Video created successfully",
             data: newVideo

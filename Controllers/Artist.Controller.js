@@ -21,7 +21,7 @@ exports.CreateArtist = async (req, res) => {
         }
         await newArtist.save();
 
-        res.status(400).json({
+        res.status(200).json({
             success: true,
             message: "Artist created successfully",
             data: newArtist
