@@ -21,7 +21,7 @@ exports.CreateVideo = async (req, res) => {
 
 exports.getAllVideo = async (req, res) => {
     try {
-        const allVideo = await videoModel.find({});
+        const allVideo = await videoModel.find();
         if (!allVideo) {
             return res.status(400).json({
                 success: false,

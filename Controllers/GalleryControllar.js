@@ -19,8 +19,33 @@ const createGallery = async(req,res)=>{
     }
 }
 
+const getGallery = async(req,res)=>{
+    try {
+        const data = await galley.find()
+        if(!data){
+            return res.status(404).json({
+                success:false,
+                mess:"Gallery not found"
+            })
+        }
+        else{
+            res.status(200).json({
+                success:true,
+                mess:"Gallery found",
+                data:data
+            }) 
+        }
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({
+            success:false,
+            mess:"Internal server errro"
+        })
+    }
+}
+
 
 
 module.exports = {
-    createGallery
+    createGallery ,getGallery
 }
