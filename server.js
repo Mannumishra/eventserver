@@ -2,11 +2,13 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
 const cors = require('cors')
-const connectDB = require('./Config/db');
+
 const Router = require('./Router/Routers');
 const vedioRouter = require('./Router/VedioRouter');
 const galleryRouter = require('./Router/GalleyRouter');
+const { connectDB } = require('./Config/db');
 
+connectDB()
 dotenv.config();
 
 // Middleware setup
@@ -33,4 +35,3 @@ console.log(PORT)
 app.listen(9000, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-connectDB()
