@@ -14,13 +14,15 @@ dotenv.config();
 // Middleware setup
 app.use(cors())
 app.use(express.json())
+
+
+app.use("/api", Router)
+app.use("/api", vedioRouter)
+app.use("/api", galleryRouter)
+// Sample route
+
 app.set(express.static("./public"))
 app.use("/public", express.static("public"))
-
-app.use("/api" ,Router)
-app.use("/api" ,vedioRouter)
-app.use("/api" ,galleryRouter)
-// Sample route
 app.get('/', (req, res) => {
   res.send('Hello, World!');
 });
