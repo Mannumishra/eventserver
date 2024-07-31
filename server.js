@@ -14,7 +14,7 @@ dotenv.config();
 // Middleware setup
 app.use(cors())
 app.use(express.json())
-app.set(express.static("public"))
+app.set(express.static("./public"))
 app.use("/public", express.static("public"))
 
 app.use("/api" ,Router)
