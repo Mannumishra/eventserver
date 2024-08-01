@@ -3,6 +3,7 @@ const app = express();
 const dotenv = require('dotenv');
 const cors = require('cors')
 
+dotenv.config()
 const Router = require('./Router/Routers');
 const vedioRouter = require('./Router/VedioRouter');
 const galleryRouter = require('./Router/GalleyRouter');
@@ -30,10 +31,10 @@ app.get('/', (req, res) => {
 
 
 // Port setup
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 7000;
 console.log(PORT)
 
 // Start the server
-app.listen(9000, () => {
+app.listen(7000, () => {
   console.log(`Server is running on port ${PORT}`);
 });
