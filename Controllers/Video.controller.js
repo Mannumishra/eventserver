@@ -52,6 +52,7 @@ exports.getSingleVideo = async (req, res) => {
                 success: false,
                 message: "No video found"
             });
+            
         }
         res.status(200).json({
             success: true,
