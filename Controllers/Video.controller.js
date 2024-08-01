@@ -1,16 +1,28 @@
 const videoModel = require('../Models/Video.model');
+const { uploadVideo } = require('../Utils/Cloudnary');
+const fs = require("fs")
 
 exports.CreateVideo = async (req, res) => {
     try {
-        const newVideo = new videoModel();
-        const addVideo = req.file.path;
-        newVideo.video = addVideo;
-        await newVideo.save();
-        res.status(200).json({
-            success: true,
-            message: "Video created successfully",
-            data: newVideo
-        });
+        console.log(req.file)
+        if (!req.file) {
+            return res.status(400).json({
+                success: false,
+                message: "Gallery image is required"
+            });
+        }
+        else {
+            const newVideo = new videoModel();
+            const vediourl = await uploadVideo(req.file.path)
+            newVideo.video = vediourl;
+            await newVideo.save();
+            res.status(200).json({
+                success: true,
+                message: "Video created successfully",
+                data: newVideo
+            });
+            fs.unlinkSync(req.file.path)
+        }
     } catch (error) {
         console.log(error);
         res.status(500).json({
