@@ -22,7 +22,7 @@ const uploadVideo = async (file) => {
     try {
         const result = await cloudinary.uploader.upload(file, {
             folder: "artists",
-            resource_type: "video" // Specify the resource type as video
+            resource_type: "video" 
         });
         return result.secure_url;
     } catch (error) {
@@ -31,7 +31,16 @@ const uploadVideo = async (file) => {
     }
 };
 
+const deleteImageFromCloudinary = async (file) => {
+    try {
+        await cloudinary.uploader.destroy(file);
+        console.log("Video Deleted");
+    } catch (error) {
+        console.error("Error deleting video from Cloudinary", error);
+        throw new Error('Failed to delete video from Cloudinary');
+    }
+};
 
 module.exports = {
-    uploadImage ,uploadVideo
+    uploadImage, uploadVideo, deleteImageFromCloudinary
 };
